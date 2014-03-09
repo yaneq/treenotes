@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 treenotes
+  div(ng-controller='TreeController')
+    ul#tree
+      li(ng-repeat='note in root.children', ng-class='{selected:selected_note == note}')
+        {{note.text}}
+        ul
+    button(ng-click='addNew()') add new
+block scripts
+  script(src='/javascripts/lib/note.js')
+  script(src='/javascripts/index.js')
