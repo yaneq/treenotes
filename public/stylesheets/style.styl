@@ -4,11 +4,23 @@ body
 a
   color: #00B7FF
 
-/*tree styles*/
-#tree li
-  padding: 4px
-  border: 1px solid white
+#tree ul, ul#tree
+  margin: 0 0 0 10px
+  padding: 0
 
-#tree li.selected
+#tree li
+  padding: 5px
+
+#tree li:first-child
+  margin-top: 4px
+
+/*tree styles*/
+#tree li span
+  border: 1px solid transparent
+  padding: 4px
+  cursor: pointer
+
+#tree li span.selected
   border: 1px solid #faa
+  background-color: #fbb
 
