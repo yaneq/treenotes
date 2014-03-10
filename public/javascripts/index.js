@@ -23,8 +23,12 @@ function TreeController($scope, $document) {
   $scope.root = new Note();
 
   // add sample notes
-  $scope.root.addChild(new Note('one text'));
-  $scope.root.addChild(new Note('another text'));
+  var note1 = new Note('one text');
+  var note2 = new Note('another text');
+  var note22 = new Note('sub text');
+  note2.addChild(note22);
+  $scope.root.addChild(note1);
+  $scope.root.addChild(note2);
 
   // select first note
   $scope.selected_note = $scope.root.firstChild();
