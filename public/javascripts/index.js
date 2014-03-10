@@ -20,6 +20,10 @@ function TreeController($scope, $document) {
     }
   };
 
+  $scope.selectNote = function(note){
+    $scope.selected_note = note;
+  };
+
   $scope.root = new Note();
 
   // add sample notes
