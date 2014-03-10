@@ -5,9 +5,11 @@ body {
 a {
   color: #00b7ff;
 }
-
-
 /*tree styles*/
-#tree li.selected{
+#tree li {
+  padding: 4px;
+  border: 1px solid #fff;
+}
+#tree li.selected {
   border: 1px solid #faa;
 }

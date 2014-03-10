@@ -1,10 +1,18 @@
-function Note(parent){
+function Note(text, parent){
   this.parent = parent;
-  this.children = [
-    { text: 'some text' },
-    { text: 'some text' }
-  ];
+  this.text = text;
+  this.children = [];
+
+  // register with parent
+  if(this.parent) {
+    this.parent.register(this);
+  }
 }
+
+Note.prototype.addChild = function(note) {
+  this.children.push(note);
+  note.parent = this;
+};
 
 Note.prototype.firstChild = function() {
   if(this.children.length > 0) {
@@ -23,8 +31,18 @@ Note.prototype.lastChild = function() {
 Note.prototype.nextSibling = function() {
   if(this.parent) {
     var idx = this.parent.children.indexOf(this);
-    if(this.parent.children.length < idx + 2) {
+    if(this.parent.children.length > idx + 1) {
       return this.parent.children[idx + 1];
+    }
+  }
+  return null;
+};
+
+Note.prototype.previousSibling = function() {
+  if(this.parent) {
+    var idx = this.parent.children.indexOf(this);
+    if(idx > 0) {
+      return this.parent.children[idx - 1];
     }
   }
   return null;
