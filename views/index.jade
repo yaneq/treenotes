@@ -4,9 +4,15 @@ block content
   h1 treenotes
   div(ng-controller='TreeController')
     ul#tree
-      li(ng-repeat='note in root.children', ng-class='{selected: selected_note == note}')
-        {{note.text}}
+      li(ng-repeat='note in root.children', ng-include="'note-template'")
     //- button(ng-click='addNew()') add new
 block scripts
+  script(type='text/ng-template', id='note-template')
+    span(ng-class='{selected: selected_note == note}', ng-click='selectNote(note)')
+      {{note.text}}
+    ul
+      li(ng-repeat='note in note.children', ng-include="'note-template'", ng-class='{selected: selected_note == note}', ng-click='selectNote(note)')
+
   script(src='/javascripts/lib/note.js')
   script(src='/javascripts/index.js')
+
